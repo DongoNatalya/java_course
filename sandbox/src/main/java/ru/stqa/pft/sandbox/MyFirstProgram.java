@@ -10,8 +10,9 @@ public class MyFirstProgram {
         hello("Natalya");
 
 
-        Point P = new Point(10, 5, 12, 30);
-        System.out.println("Расстояние между точками = " + P.distance());
+        Point p1 = new Point(10, 5);
+        Point p2 = new Point(15, 8);
+        System.out.println("Расстояние между точками = " + p1.distance(p2));
     }
     public static void hello (String somebody) {
         System.out.println("Hello, " + somebody +"!");
