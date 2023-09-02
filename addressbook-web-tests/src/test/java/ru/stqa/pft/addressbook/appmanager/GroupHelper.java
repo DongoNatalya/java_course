@@ -33,7 +33,7 @@ public class GroupHelper extends HelperBase {
   }
 
   public void selectGroup() {
-    click(By.xpath("//div[@id='content']/form/span[9]/input"));
+    click(By.name("selected[]"));
   }
 
   public void initGroupModification() {
