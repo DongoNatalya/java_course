@@ -21,11 +21,11 @@ public class ApplicationManager {
   }
 
   public void init() {
-    if (browser == "firefox") {
+    if (browser.equals("firefox")) {
       wd = new FirefoxDriver();
-    } else if (browser == "chrome") {
+    } else if (browser.equals("chrome")) {
       wd = new ChromeDriver();
-    } else if (browser == "MicrosoftEdge") {
+    } else if (browser.equals("MicrosoftEdge")) {
       wd = new EdgeDriver();
     }
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
