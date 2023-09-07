@@ -9,9 +9,12 @@ public class ContactData {
   private  String mobile;
   private  String email;
   private  String group;
-  private String contactline;
+  private String id;
+
+
 
   public ContactData(String firstname, String middlename, String lastname, String mobile, String email, String group) {
+    this.id = null;
     this.firstname = firstname;
     this.middlename = middlename;
     this.lastname = lastname;
@@ -20,10 +23,14 @@ public class ContactData {
     this.group = group;
   }
 
-
-  public ContactData(String contactline) {
-
-    this.contactline = contactline;
+  public ContactData(String id, String firstname, String middlename, String lastname, String mobile, String email, String group) {
+    this.id = id;
+    this.firstname = firstname;
+    this.middlename = middlename;
+    this.lastname = lastname;
+    this.mobile = mobile;
+    this.email = email;
+    this.group = group;
   }
 
   public String getFirstname() {
@@ -46,8 +53,8 @@ public class ContactData {
     return email;
   }
 
-  public String getGroup() {
-    return group;
+  public String getId() {
+    return id;
   }
 
   @Override
@@ -55,22 +62,26 @@ public class ContactData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return Objects.equals(contactline, that.contactline);
+    return Objects.equals(firstname, that.firstname) && Objects.equals(lastname, that.lastname) && Objects.equals(id, that.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(contactline);
+    return Objects.hash(firstname, lastname, id);
   }
 
   @Override
   public String toString() {
     return "ContactData{" +
-            "contactline='" + contactline + '\'' +
+            "firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            ", id='" + id + '\'' +
             '}';
   }
 
-  public String getContactline() {
-    return contactline;
+  public String getGroup() {
+    return group;
   }
+
+
 }
