@@ -52,6 +52,17 @@ public class ContactHelper extends HelperBase {
         initContactCreation();
         fillContactForm(contact);
         saveContact();
+        returnToHomePage();
+    }
+
+    public void modifyContact(List<ContactData> before, int index, ContactData contact) {
+        initContactModification(before.get(index).getId());
+        fillContactForm(contact);
+        submitContactModification();
+        returnToHomePage();
+    }
+    public void returnToHomePage() {
+        wd.findElement(By.linkText("home page")).click();
     }
 
     public boolean isThereAContact() {
