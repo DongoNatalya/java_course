@@ -11,6 +11,19 @@ public class ContactData {
   private String group;
   private int id = Integer.MAX_VALUE;
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(lastname, that.lastname);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(firstname, lastname, id);
+  }
+
   public String getFirstname() {
     return firstname;
   }
@@ -80,19 +93,6 @@ public class ContactData {
             ", lastname='" + lastname + '\'' +
             ", id='" + id + '\'' +
             '}';
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return Objects.equals(firstname, that.firstname) && Objects.equals(lastname, that.lastname);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(firstname, lastname);
   }
 
 }
