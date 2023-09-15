@@ -6,7 +6,10 @@ public class ContactData {
   private String firstname;
   private String middlename;
   private String lastname;
-  private String mobile;
+  private String homePhone;
+  private String mobilePhone;
+  private String workPhone;
+
   private String email;
   private String group;
   private int id = Integer.MAX_VALUE;
@@ -36,8 +39,8 @@ public class ContactData {
     return lastname;
   }
 
-  public String getMobile() {
-    return mobile;
+  public String getMobilePhone() {
+    return mobilePhone;
   }
 
   public String getEmail() {
@@ -49,6 +52,14 @@ public class ContactData {
   }
   public String getGroup() {
     return group;
+  }
+
+  public String getHomePhone() {
+    return homePhone;
+  }
+
+  public String getWorkPhone() {
+    return workPhone;
   }
 
   public ContactData withId(int id) {
@@ -71,8 +82,18 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withMobile(String mobile) {
-    this.mobile = mobile;
+  public ContactData withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
+
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+    return this;
+  }
+
+  public ContactData withMobilePhone(String mobile) {
+    this.mobilePhone = mobile;
     return this;
   }
 
