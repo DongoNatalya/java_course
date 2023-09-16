@@ -10,16 +10,6 @@ public class ContactData {
   private String mobilePhone;
   private String workPhone;
   private  String allPhones;
-
-  public ContactData withAllPhones(String allPhones) {
-    this.allPhones = allPhones;
-    return this;
-  }
-
-  public String getAllPhones() {
-    return allPhones;
-  }
-
   private String email;
   private String group;
   private int id = Integer.MAX_VALUE;
@@ -35,6 +25,15 @@ public class ContactData {
   @Override
   public int hashCode() {
     return Objects.hash(firstname, lastname, id);
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+  public String getAllPhones() {
+    return allPhones;
   }
 
   public String getFirstname() {
