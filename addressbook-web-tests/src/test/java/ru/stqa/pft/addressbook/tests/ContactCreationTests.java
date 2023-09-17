@@ -16,9 +16,9 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation() throws Exception {
     app.goTo().homePage();
     Contacts before = app.contact().all();
-    File photo = new File("src/test/resources/IMG_9903.jpg");
+    File photo = new File("src/test/resources/ava.png");
     ContactData contact = new ContactData()
-            .withFirstname("Тест2").withMiddlename("Тестович").withLastname("Тестов").withMobilePhone("89131111608").withPhoto(photo);
+            .withFirstname("Тауриэль").withMiddlename("Эльфовна").withLastname("Эльфова").withMobilePhone("89131111608").withPhoto(photo);
     app.contact().create(contact);
     app.goTo().homePage();
     assertThat(app.contact().count(),equalTo(before.size() + 1));
