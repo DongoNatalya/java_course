@@ -15,6 +15,7 @@ public class ContactData {
   private String email;
   private String email2;
   private String email3;
+  private String phone2;
   private String group;
   private int id = Integer.MAX_VALUE;
 
@@ -92,6 +93,14 @@ public class ContactData {
 
   public String getWorkPhone() {
     return workPhone;
+  }
+  public String getPhone2() {
+    return phone2;
+  }
+
+  public ContactData withPhone2(String phone2) {
+    this.phone2 = phone2;
+    return this;
   }
 
   public ContactData withId(int id) {
