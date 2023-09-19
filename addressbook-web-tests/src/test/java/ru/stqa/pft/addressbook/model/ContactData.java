@@ -2,6 +2,7 @@ package ru.stqa.pft.addressbook.model;
 
 import com.google.gson.annotations.Expose;
 
+import java.beans.Transient;
 import java.io.File;
 import java.util.Objects;
 
@@ -24,7 +25,7 @@ public class ContactData {
   private String phone2;
   private String group;
   private int id = Integer.MAX_VALUE;
-  private File photo;
+  transient private File photo;
 
   public File getPhoto() {
     return photo;
