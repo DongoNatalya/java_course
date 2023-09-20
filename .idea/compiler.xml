@@ -4,5 +4,10 @@
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="addressbook-web-tests" target="17" />
+      <module name="addressbook-web-tests.main" target="17" />
+      <module name="addressbook-web-tests.test" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
