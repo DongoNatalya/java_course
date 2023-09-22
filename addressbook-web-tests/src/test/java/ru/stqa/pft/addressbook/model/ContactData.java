@@ -1,29 +1,42 @@
 package ru.stqa.pft.addressbook.model;
 
 import com.google.gson.annotations.Expose;
+import jakarta.persistence.*;
 
-import java.beans.Transient;
 import java.io.File;
 import java.util.Objects;
-
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
   @Expose
+  @Column(name = "firstname")
   private String firstname;
   @Expose
+  @Column(name = "middlename")
   private String middlename;
   @Expose
+  @Column(name = "lastname")
   private String lastname;
+
   private String address;
+  @Column(name = "home")
   private String homePhone;
+  @Column(name = "mobile")
   private String mobilePhone;
+  @Column(name = "work")
   private String workPhone;
+  @Transient
   private  String allPhones;
+  @Transient
   private String allEMails;
   private String email;
   private String email2;
   private String email3;
   private String phone2;
+  @Transient
   private String group;
+  @Id
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
   transient private File photo;
 
