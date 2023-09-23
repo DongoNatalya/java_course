@@ -4,7 +4,10 @@ import com.google.gson.annotations.Expose;
 import jakarta.persistence.*;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 @Entity
 @Table(name = "addressbook")
 public class ContactData {
@@ -17,38 +20,6 @@ public class ContactData {
   @Expose
   @Column(name = "lastname")
   private String lastname;
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(middlename, that.middlename) && Objects.equals(lastname, that.lastname) && Objects.equals(mobilePhone, that.mobilePhone) && Objects.equals(email, that.email);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(firstname, middlename, lastname, mobilePhone, email, id);
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "firstname='" + firstname + '\'' +
-            ", middlename='" + middlename + '\'' +
-            ", lastname='" + lastname + '\'' +
-            ", address='" + address + '\'' +
-            ", homePhone='" + homePhone + '\'' +
-            ", mobilePhone='" + mobilePhone + '\'' +
-            ", workPhone='" + workPhone + '\'' +
-            ", email='" + email + '\'' +
-            ", email2='" + email2 + '\'' +
-            ", email3='" + email3 + '\'' +
-            ", phone2='" + phone2 + '\'' +
-            ", id=" + id +
-            '}';
-  }
-
   private String address;
   @Column(name = "home")
   private String homePhone;
@@ -66,12 +37,14 @@ public class ContactData {
   private String email2;
   private String email3;
   private String phone2;
-  @Transient
-  private String group;
   @Id
   @Column(name = "id")
   private int id = Integer.MAX_VALUE;
   transient private File photo;
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "address_in_groups",
+          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
 
   public File getPhoto() {
     return photo;
@@ -133,10 +106,6 @@ public class ContactData {
     return email3;
   }
 
-  public String getGroup() {
-    return group;
-  }
-
   public String getHomePhone() {
     return homePhone;
   }
@@ -146,6 +115,10 @@ public class ContactData {
   }
   public String getPhone2() {
     return phone2;
+  }
+
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
   public ContactData withPhone2(String phone2) {
@@ -209,9 +182,35 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return id == that.id && Objects.equals(firstname, that.firstname) && Objects.equals(middlename, that.middlename) && Objects.equals(lastname, that.lastname) && Objects.equals(mobilePhone, that.mobilePhone) && Objects.equals(email, that.email);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(firstname, middlename, lastname, mobilePhone, email, id);
+  }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "firstname='" + firstname + '\'' +
+            ", middlename='" + middlename + '\'' +
+            ", lastname='" + lastname + '\'' +
+            ", address='" + address + '\'' +
+            ", homePhone='" + homePhone + '\'' +
+            ", mobilePhone='" + mobilePhone + '\'' +
+            ", workPhone='" + workPhone + '\'' +
+            ", email='" + email + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
+            ", phone2='" + phone2 + '\'' +
+            ", id=" + id +
+            '}';
   }
 
 }
